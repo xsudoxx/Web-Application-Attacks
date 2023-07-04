@@ -19,3 +19,5 @@ CREATE TABLE IF NOT EXISTS submissions (
     email VARCHAR(255),
     message TEXT
 );
+INSERT INTO submissions (name,email,message)
+VALUES ('Admin','Admin@hackme.com','There is a known issue with this websites login page, you can by pass the login!!!!')
