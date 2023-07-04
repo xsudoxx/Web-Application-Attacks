@@ -214,3 +214,52 @@ LIMIT: Used to limit the number of results returned by a query. Syntax: SELECT *
 
 These are just a few examples of the key syntaxes used in MySQL. There are many more syntaxes available, including advanced features such as stored procedures, triggers, and views.
 ````
+## Parameterized Queries
+````
+Parameterized queries are a more secure way to prevent SQL injection attacks than using concatenated queries. Here's how to use parameterized queries in MySQL:
+
+Define the SQL query using placeholders instead of user input values.
+
+Define a tuple or list of the user input values that will replace the placeholders.
+
+Pass the SQL query and the tuple or list of input values as arguments to the execute() method of the cursor object.
+
+Here's an example that shows how to use parameterized queries in Python with MySQL:
+````
+### Example
+````
+import mysql.connector
+
+# Connect to the database
+db = mysql.connector.connect(
+    host='localhost',
+    user='myusername',
+    password='mypassword',
+    database='mydatabase'
+)
+
+# Define the SQL query with placeholders
+query = "SELECT * FROM users WHERE username = %s AND password = %s"
+
+# Define the tuple of input values
+values = ('johndoe', 'password123')
+
+# Create a cursor object and execute the query with the input values
+cursor = db.cursor()
+cursor.execute(query, values)
+
+# Retrieve the results and do something with them
+results = cursor.fetchall()
+for result in results:
+    print(result)
+
+# Close the database connection
+db.close()
+
+
+
+
+In this example, the SQL query uses placeholders %s instead of the actual user input values. The input values are stored in a tuple values and passed as the second argument to the execute() method of the cursor object.
+
+Using parameterized queries helps prevent SQL injection attacks because the user input values are treated as data, not as part of the SQL query. This makes it much more difficult for an attacker to inject malicious SQL code into the query.
+````
