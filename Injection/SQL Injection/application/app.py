@@ -28,9 +28,15 @@ def login():
                 database='mydatabase'
             )
             cursor = db.cursor()
-            query = "SELECT * FROM users WHERE (email = %s OR username = %s) AND password = %s"
-            values = (username_or_email, username_or_email, password)
-            cursor.execute(query, values)
+
+            if '@' in username_or_email:
+                # Look up user by email
+                query = "SELECT * FROM users WHERE email = '" + username_or_email + "' AND password = '" + password + "'"
+            else:
+                # Look up user by username
+                query = "SELECT * FROM users WHERE username = '" + username_or_email + "' AND password = '" + password + "'"
+
+            cursor.execute(query)
             user = cursor.fetchone()
 
             # Close the connection
