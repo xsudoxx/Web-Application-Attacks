@@ -34,7 +34,7 @@ To prevent this from happening, website developers have to be very careful about
 Open Docker and have it running
 ````
 
-![image](https://github.com/xsudoxx/Web-Application-Attacks/assets/127046919/e9ca8dd6-42f5-48d4-9758-859c84e2a2ce)
+![image](https://github.com/xsudoxx/Web-Application-Attacks/assets/127046919/16a6145f-5cce-4c70-be86-34b0e24e03ee)
 
 ````
 Go into [VSCode]
