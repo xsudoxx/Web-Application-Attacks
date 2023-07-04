@@ -17,7 +17,7 @@ def home():
 def login():
     if request.method == 'POST':
         try:
-            email = request.form['email']
+            username_or_email = request.form['username_or_email']
             password = request.form['password']
 
             # Connect to the database and retrieve the user
@@ -28,8 +28,8 @@ def login():
                 database='mydatabase'
             )
             cursor = db.cursor()
-            query = "SELECT * FROM users WHERE email = %s AND password = %s"
-            values = (email, password)
+            query = "SELECT * FROM users WHERE (email = %s OR username = %s) AND password = %s"
+            values = (username_or_email, username_or_email, password)
             cursor.execute(query, values)
             user = cursor.fetchone()
 
@@ -39,7 +39,7 @@ def login():
             if user:
                 # Store the user's information in the session
                 session['user_id'] = user[0]
-                session['name'] = user[1]
+                session['username'] = user[1]
                 session['email'] = user[2]
                 session['password'] = user[3]
 
@@ -54,7 +54,7 @@ def login():
                 return redirect(url_for('user_home', user_id=user[0]))
 
             else:
-                flash("Invalid email or password. Please try again.")
+                flash("Invalid username or password. Please try again.")
                 return redirect(url_for('login'))
 
         except Exception as e:
@@ -65,14 +65,11 @@ def login():
     return render_template('login.html')
 
 
-
-
-
 @app.route('/register', methods=['GET', 'POST'])
 def register():
     if request.method == 'POST':
         try:
-            name = request.form['name']
+            username = request.form['username']
             email = request.form['email']
             password = request.form['password']
 
@@ -95,8 +92,8 @@ def register():
                 return redirect(url_for('login'))
 
             # Insert the user into the database with the 'user' role
-            query = "INSERT INTO users (name, email, password, role) VALUES (%s, %s, %s, %s)"
-            values = (name, email, password, 'user')
+            query = "INSERT INTO users (username, email, password, role) VALUES (%s, %s, %s, %s)"
+            values = (username, email, password, 'user')
             cursor.execute(query, values)
             db.commit()
             db.close()
@@ -134,11 +131,11 @@ def user_home(user_id):
             db.close()
 
             if user:
-                name = user['name']
+                username = user['username']
                 email = user['email']
                 password = user['password']
 
-                return render_template('home.html', name=name, email=email, user_id=user_id, password=password)
+                return render_template('home.html', username=username, email=email, user_id=user_id, password=password)
             else:
                 flash("User not found.")
         else:
@@ -157,10 +154,10 @@ def admin():
     if session.get('is_admin'):
         # Get the admin's email and name from the session or database
         email = session['email']  # Update this with the key used to store the email in the session
-        name = session['name']  # Update this with the key used to store the name in the session
+        username = session['username']  # Update this with the key used to store the name in the session
 
         # Render the admin.html template and pass the email and name as template variables
-        return render_template('admin.html', email=email, name=name,is_admin=True)
+        return render_template('admin.html', email=email, username=username,is_admin=True)
     else:
         # Redirect non-admin users to a different page or display an error message
         return redirect(url_for('login'))

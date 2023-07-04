@@ -42,43 +42,36 @@
     </div>
   </nav>
 
-  <!-- Main Content -->
-  <main class="container mt-5">
-    <h1>Login Page</h1>
-    <p>This is the login page</p>
-  </main>
+ <!-- Login Form -->
+<main class="container mt-5">
+  <h1>Login</h1>
+  <form method="POST" action="/login">
+    <div class="mb-3">
+      <label for="username_or_email" class="form-label">Username or Email address</label>
+      <input type="text" class="form-control" id="username_or_email" name="username_or_email" required>
+    </div>
+    <div class="mb-3">
+      <label for="password" class="form-label">Password</label>
+      <input type="password" class="form-control" id="password" name="password" required>
+    </div>
+    <button type="submit" class="btn btn-primary">Login</button>
+    <a href="/register" class="btn btn-link">Register</a> <!-- Add registration button -->
+  </form>
 
-  <!-- Login Form -->
-  <main class="container mt-5">
-    <h1>Login</h1>
-    <form method="POST" action="/login">
-      <div class="mb-3">
-        <label for="email" class="form-label">Email address</label>
-        <input type="email" class="form-control" id="email" name="email" aria-describedby="emailHelp" required>
-        <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+  {% with messages = get_flashed_messages() %}
+    {% if messages %}
+      <div class="alert alert-danger" role="alert" id="flash-message">
+        {{ messages[0] }}
       </div>
-      <div class="mb-3">
-        <label for="password" class="form-label">Password</label>
-        <input type="password" class="form-control" id="password" name="password" required>
-      </div>
-      <button type="submit" class="btn btn-primary">Login</button>
-      <a href="/register" class="btn btn-link">Register</a> <!-- Add registration button -->
-    </form>
-
-    {% with messages = get_flashed_messages() %}
-      {% if messages %}
-        <div class="alert alert-danger" role="alert" id="flash-message">
-          {{ messages[0] }}
-        </div>
-        <script>
-          setTimeout(function() {
-            var flashMessage = document.getElementById('flash-message');
-            flashMessage.style.display = 'none';
-          }, 5000);  // Delay in milliseconds (5 seconds in this example)
-        </script>
-      {% endif %}
-    {% endwith %}
-  </main>
+      <script>
+        setTimeout(function() {
+          var flashMessage = document.getElementById('flash-message');
+          flashMessage.style.display = 'none';
+        }, 5000);  // Delay in milliseconds (5 seconds in this example)
+      </script>
+    {% endif %}
+  {% endwith %}
+</main>
 
   <!-- Bootstrap JavaScript dependencies (jQuery and Popper.js) -->
   <script src="https://code.jquery.com/jquery-3.6.
