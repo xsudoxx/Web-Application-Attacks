@@ -7,7 +7,10 @@
 ````
 SQL injection (SQLi) is a web security vulnerability that allows an attacker to interfere with the queries that an application makes to its database. It generally allows an attacker to view data that they are not normally able to retrieve. This might include data belonging to other users, or any other data that the application itself is able to access. In many cases, an attacker can modify or delete this data, causing persistent changes to the application's content or behavior.
 ````
-
+## PayloadAllThings
+````
+https://github.com/swisskyrepo/PayloadsAllTheThings/blob/master/SQL%20Injection/MySQL%20Injection.md
+````
 ## chatgpt summary
 ````
 Structured Query Language (SQL) injection is a type of web application security vulnerability that allows an attacker to inject malicious SQL code into a web application's input fields, which can then be executed by the backend database. This can enable the attacker to access, modify, or delete data in the database, or to perform other malicious actions such as bypassing authentication or escalating privileges.
