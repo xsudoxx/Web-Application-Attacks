@@ -151,11 +151,63 @@ By using parameterized queries, the code is much safer from SQL injection attack
 ````
 
 # Cyber Security Skills Learned
-## Authentication
+## SQLI
 ````
-Authentication is the process of verifying the identity of a user or entity to ensure that they are who they claim to be. In the context of computer systems and online services, authentication is crucial for controlling access to resources and protecting sensitive information.
+SQL injection (SQLi) is a type of security vulnerability that can occur in web applications that use databases to store and retrieve information.
+
+When a user interacts with a web application, they may be asked to enter data into a form or other input field. This data is then used by the application to construct a SQL query that is sent to the database. The query is designed to retrieve or modify information in the database based on the user's input.
+
+However, if the web application is not properly designed, an attacker can manipulate the input fields in a way that causes the SQL query to execute in unexpected ways. This can allow the attacker to access, modify, or delete sensitive data in the database, or to perform other malicious actions such as bypassing authentication or escalating privileges.
+
+For example, an attacker may submit input values that contain SQL code, such as ' OR 1=1 --, which can modify the SQL query and cause unexpected behavior. This can allow the attacker to retrieve sensitive data from the database or to perform other malicious actions.
+
+SQL injection attacks can be prevented by using input validation and parameterized queries to ensure that user input is always treated as data, rather than as part of the SQL query. Input validation checks the user's input to ensure that it is valid and does not contain any special characters or code that could be used to exploit the database. Parameterized queries use placeholders in the SQL query and pass the values separately, which ensures that user input is always treated as data, rather than as part of the SQL query.
 ````
 ### Example 
 ````
-User provides credentials: The user submits their identification information, such as a username or email, and a secret password.
+Classic SQL injection: This is the most common type of SQL injection attack, where the attacker submits a specially crafted input value that modifies the SQL query in unexpected ways. For example, the attacker may use single quotes to break out of a string literal and inject their own SQL code.
+
+Blind SQL injection: In this type of attack, the attacker sends input values that don't result in any visible changes to the web application, but can still modify the SQL query or retrieve sensitive information. Blind SQL injection attacks are often used when the web application is designed to suppress error messages or when the attacker wants to remain undetected.
+
+Error-based SQL injection: In this type of attack, the attacker submits input values that cause the database to generate error messages, which can reveal information about the structure of the database or the SQL query being executed. The attacker can then use this information to refine their attack and modify the SQL query in unexpected ways.
+
+Union-based SQL injection: In this type of attack, the attacker uses the UNION operator to combine the results of two or more SQL queries into a single result set. The attacker can use this technique to extract sensitive information from the database or to modify the SQL query in unexpected ways.
+
+Time-based SQL injection: In this type of attack, the attacker submits input values that cause the SQL query to take a long time to execute, which can be used to infer information about the database or to cause a denial-of-service (DoS) attack.
+
+Out-of-band SQL injection: This type of attack uses a different channel to send data from the database to the attacker, such as through an email or an HTTP request. This can be useful when the web application is designed to prevent the attacker from receiving data directly from the database.
+````
+## MySql
+````
+MySQL is a popular open-source relational database management system (RDBMS) that is commonly used in web applications to store and retrieve information. It was first released in 1995 and is now owned by Oracle Corporation.
+
+MySQL is used to organize and manage data in a structured way. It allows users to create databases, tables, and relationships between tables, and to insert, update, and retrieve data from those tables using SQL (Structured Query Language) commands.
+
+MySQL is widely used in web applications because it is fast, scalable, and reliable. It can handle large amounts of data and can be easily integrated with other programming languages and frameworks, such as PHP, Python, and Java.
+````
+### Example
+````
+Here are some key syntaxes of MySQL:
+
+CREATE DATABASE: Used to create a new database. Syntax: CREATE DATABASE database_name;
+
+CREATE TABLE: Used to create a new table within a database. Syntax: CREATE TABLE table_name (column1 datatype, column2 datatype, column3 datatype, ...);
+
+SELECT: Used to retrieve data from one or more tables. Syntax: SELECT column1, column2, ... FROM table_name WHERE condition;
+
+INSERT INTO: Used to insert new data into a table. Syntax: INSERT INTO table_name (column1, column2, ...) VALUES (value1, value2, ...);
+
+UPDATE: Used to modify existing data in a table. Syntax: UPDATE table_name SET column1 = value1, column2 = value2, ... WHERE condition;
+
+DELETE: Used to delete data from a table. Syntax: DELETE FROM table_name WHERE condition;
+
+JOIN: Used to combine data from two or more tables. Syntax: SELECT * FROM table1 JOIN table2 ON table1.column = table2.column;
+
+GROUP BY: Used to group data based on a specific column. Syntax: SELECT column1, COUNT(column2) FROM table_name GROUP BY column1;
+
+ORDER BY: Used to sort data in ascending or descending order. Syntax: SELECT * FROM table_name ORDER BY column1 ASC/DESC;
+
+LIMIT: Used to limit the number of results returned by a query. Syntax: SELECT * FROM table_name LIMIT 10;
+
+These are just a few examples of the key syntaxes used in MySQL. There are many more syntaxes available, including advanced features such as stored procedures, triggers, and views.
 ````
