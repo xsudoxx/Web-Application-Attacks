@@ -1,0 +1,32 @@
+<employees>
+  <employee>
+    <name>Juan Pérez</name>
+    <email>juan.perez@example.com</email>
+    <password>contraseña123</password>
+    <phone_number>1234567890</phone_number>
+  </employee>
+  <employee>
+    <name>María García</name>
+    <email>maria.garcia@example.com</email>
+    <password>secreto</password>
+    <phone_number>9876543210</phone_number>
+  </employee>
+  <employee>
+    <name>Carlos Rodríguez</name>
+    <email>carlos.rodriguez@example.com</email>
+    <password>12345678</password>
+    <phone_number>5555555555</phone_number>
+  </employee>
+  <employee>
+    <name>Sofía López</name>
+    <email>sofia.lopez@example.com</email>
+    <password>contraseña</password>
+    <phone_number>1111111111</phone_number>
+  </employee>
+  <employee>
+    <name>Pablo Martínez</name>
+    <email>pablo.martinez@example.com</email>
+    <password>password123</password>
+    <phone_number>9999999999</phone_number>
+  </employee>
+</employees>

@@ -1,15 +1,60 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>XML Viewer</title>
-  <style>
-    pre {
-      white-space: pre-wrap;
-    }
-  </style>
+    <title>My Cool Company</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 36px;
+            color: #333;
+        }
+
+        p {
+            font-size: 18px;
+            color: #777;
+            margin-top: 20px;
+        }
+
+        .directory-bar {
+            margin-top: 40px;
+        }
+
+        .directory-bar a {
+            font-size: 18px;
+            color: #333;
+            text-decoration: none;
+            margin-right: 20px;
+            transition: color 0.3s ease;
+        }
+
+        .directory-bar a:hover {
+            color: #ff5500;
+        }
+    </style>
 </head>
 <body>
-  <h1>Generated XML</h1>
-  <pre>{{ xml_data }}</pre>
+    <div class="container">
+        <h1>Welcome to My Cool Company!</h1>
+        <p>We are a leading provider of innovative solutions.</p>
+
+        <div class="directory-bar">
+            <a href="/">Home</a>
+            <a href="/upload">Uploads</a>
+            <a href="/search">Search</a>
+        </div>
+    </div>
 </body>
 </html>

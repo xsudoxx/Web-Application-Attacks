@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Upload Files - My Cool Company</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 500px;
+            margin: 0 auto;
+            padding: 40px;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 28px;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        p {
+            font-size: 16px;
+            color: #777;
+            margin-top: 0;
+            margin-bottom: 20px;
+        }
+
+        .directory-bar {
+            margin-top: 40px;
+        }
+
+        .directory-bar a {
+            font-size: 18px;
+            color: #333;
+            text-decoration: none;
+            margin-right: 20px;
+            transition: color 0.3s ease;
+        }
+
+        .directory-bar a:hover {
+            color: #ff5500;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        input[type="file"] {
+            margin-bottom: 20px;
+        }
+
+        input[type="submit"] {
+            padding: 10px 20px;
+            background-color: #ff5500;
+            color: #fff;
+            font-size: 16px;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #e64c00;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Welcome to My Cool Company!</h1>
+        <p>If you are a new employee, please upload your XML file below:</p>
+
+        <div class="directory-bar">
+            <a href="/">Home</a>
+            <a href="/upload">Uploads</a>
+            <a href="/search">Search</a>
+        </div>
+
+        <form action="/upload" method="POST" enctype="multipart/form-data">
+            <input type="file" name="file">
+            <input type="submit" value="Upload">
+        </form>
+    </div>
+</body>
+</html>
