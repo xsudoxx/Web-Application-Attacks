@@ -11,7 +11,7 @@ services:
       - db
 
   db:
-    image: mysql:latest
+    image: mysql:latest 
     ports:
       - "32000:3306"
     environment:

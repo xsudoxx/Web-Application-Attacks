@@ -1,7 +1,6 @@
 from flask import Flask, render_template, request
 import mysql.connector
 import xml.etree.ElementTree as ET
-import xml.dom.minidom
 
 app = Flask(__name__)
 app.secret_key = 'password-test'
@@ -26,7 +25,9 @@ def upload():
 
         # Parse the XML data
         try:
-            root = ET.fromstring(xml_data)
+            # Vulnerable code: XML data is parsed without disabling external entities
+            parser = ET.XMLParser()
+            root = ET.fromstring(xml_data, parser=parser)
         except ET.ParseError as e:
             return f'Error parsing XML: {str(e)}'
 
