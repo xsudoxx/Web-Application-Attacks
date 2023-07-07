@@ -9,6 +9,8 @@ COPY ./requirements.txt ./requirements.txt
 
 # Install Python dependencies
 RUN pip install --no-cache-dir -r requirements.txt
+RUN pip install lxml
+RUN pip install traceback
 
 # Copy the application code to the working directory
 COPY . .

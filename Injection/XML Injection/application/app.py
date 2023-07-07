@@ -1,6 +1,8 @@
 from flask import Flask, render_template, request
 import mysql.connector
 import xml.etree.ElementTree as ET
+import traceback
+from lxml import etree
 
 app = Flask(__name__)
 app.secret_key = 'password-test'
@@ -91,7 +93,44 @@ def search():
         # Render the search results template with the results and keyword
         return render_template('search.html', results=results, keyword=keyword)
 
-
+@app.route('/xml', methods=['POST', 'GET'])
+def xml():
+    parsed_xml = None
+    errormsg = ''
+    
+    html = """
+    <html>
+      <body>
+    """
+    
+    if request.method == 'POST':
+        xml = request.form['xml']
+        parser = etree.XMLParser(no_network=False)  # Enable network entity resolution
+        try:
+            doc = etree.fromstring(str(xml), parser)
+            parsed_xml = etree.tostring(doc)
+            print(repr(parsed_xml))
+        except Exception as e:
+            print("Cannot parse the XML")
+            html += "Error:\n<br>\n" + traceback.format_exc()
+            
+    if parsed_xml:
+        html += "Result:\n<br>\n" + parsed_xml.decode()
+    else:
+        html += """
+          <form action="/xml" method="POST">
+            <p><h3>Enter XML to parse</h3></p>
+            <textarea class="input" name="xml" cols="40" rows="5"></textarea>
+            <p><input type="submit" value="Parse"/></p>
+          </form>
+        """
+    
+    html += """
+      </body>
+    </html>
+    """
+    
+    return html
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000)

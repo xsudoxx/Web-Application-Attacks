@@ -72,6 +72,7 @@
     </style>
 </head>
 <body>
+    {% autoescape false %}
     <div class="container">
         <h1>Welcome to My Cool Company!</h1>
         <p>If you are a new employee, please upload your XML file below:</p>
@@ -87,5 +88,6 @@
             <input type="submit" value="Upload">
         </form>
     </div>
+    {% endautoescape %}
 </body>
 </html>
