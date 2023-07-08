@@ -81,12 +81,23 @@
             <a href="/">Home</a>
             <a href="/upload">Uploads</a>
             <a href="/search">Search</a>
+            <a href="/xml">XML</a>
         </div>
 
         <form action="/upload" method="POST" enctype="multipart/form-data">
             <input type="file" name="file">
             <input type="submit" value="Upload">
         </form>
+
+        <p>Example XML file format:</p>
+        <pre>
+&lt;employee&gt;
+    &lt;name&gt;John Doe&lt;/name&gt;
+    &lt;email&gt;john.doe@example.com&lt;/email&gt;
+    &lt;password&gt;mysecretpassword&lt;/password&gt;
+    &lt;phone&gt;1234567890&lt;/phone&gt;
+&lt;/employee&gt;
+        </pre>
     </div>
     {% endautoescape %}
 </body>

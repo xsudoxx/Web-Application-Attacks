@@ -92,11 +92,11 @@ def search():
 
         # Render the search results template with the results and keyword
         return render_template('search.html', results=results, keyword=keyword)
-
+    
 @app.route('/xml', methods=['POST', 'GET'])
 def xml():
-    parsed_xml = None
-    errormsg = ''
+    parsed_xml = None  # Variable to store parsed XML
+    errormsg = ''  # Variable to store error message if any
     
     html = """
     <html>
@@ -104,18 +104,18 @@ def xml():
     """
     
     if request.method == 'POST':
-        xml = request.form['xml']
+        xml = request.form['xml']  # Get the XML data from the form submission
         parser = etree.XMLParser(no_network=False)  # Enable network entity resolution
         try:
-            doc = etree.fromstring(str(xml), parser)
-            parsed_xml = etree.tostring(doc)
-            print(repr(parsed_xml))
+            doc = etree.fromstring(str(xml), parser)  # Parse the XML using the specified parser
+            parsed_xml = etree.tostring(doc)  # Convert the parsed XML back to string
+            print(repr(parsed_xml))  # Print the parsed XML (for debugging purposes)
         except Exception as e:
             print("Cannot parse the XML")
-            html += "Error:\n<br>\n" + traceback.format_exc()
+            html += "Error:\n<br>\n" + traceback.format_exc()  # Display the error message if parsing fails
             
     if parsed_xml:
-        html += "Result:\n<br>\n" + parsed_xml.decode()
+        html += "Result:\n<br>\n" + parsed_xml.decode()  # Display the parsed XML if available
     else:
         html += """
           <form action="/xml" method="POST">
@@ -131,6 +131,5 @@ def xml():
     """
     
     return html
-
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000)
