@@ -10,17 +10,21 @@ Insecure direct object references (IDOR) are a type of access control vulnerabil
 
 ## chatgpt summary
 ````
-Cross-Site Scripting (XSS) is a type of web security vulnerability that allows attackers to inject malicious scripts into web pages viewed by other users. It occurs when a web application does not properly validate or sanitize user-generated input before displaying it on a page.
+In an application vulnerable to IDOR, there is typically a lack of proper authorization or access control mechanisms. This allows an attacker to bypass restrictions and access resources they should not be able to, such as other users' private data, confidential documents, or administrative functions.
 ````
 ## Explaining this to a 5th grader
 ````
-You know how when you visit websites, you can type in things like your name or a message? Well, sometimes bad people try to trick the website and make it show things it shouldn't. They do this by putting special codes or scripts in those input fields that the website doesn't check properly.
+Sure! Imagine you have a clubhouse where each member has their own secret box to store their toys. Only the member who owns the box can open it and play with their toys. But what if someone found a way to open other members' boxes without permission? That would be an Insecure Direct Object Reference (IDOR).
 
-When the website shows the things you typed or submitted, it doesn't realize that there might be dangerous scripts hidden in there. So, when other people visit the website and see those things, their computers try to run those scripts without even knowing it. That's when the bad people can do bad things!
+In the digital world, websites and apps use special codes to represent different things, like user accounts or files. These codes are like the secret boxes in the clubhouse. Normally, the website should check if you have permission to access certain things before letting you in. But sometimes, the website forgets to check and anyone can access someone else's things by guessing or changing the codes.
 
-For example, they could make a script that steals people's passwords or personal information, or they could even make the website look different and confuse people. It's like a sneaky way of making the website do things it's not supposed to.
+For example, let's say you have an online game where each player has their own avatar. Each avatar has a special ID number. The game should only show you your own avatar, but if there's an IDOR, you might be able to change the ID number in the website's address and see someone else's avatar.
 
-To stay safe from XSS, it's important for websites to be very careful about what people can type or submit. They need to check everything properly and make sure it doesn't have any hidden codes or scripts. That way, everyone can use websites without worrying about their information or computer being at risk.
+This is a problem because it means people can see or change things they're not supposed to. It's like being able to open someone else's secret box in the clubhouse without permission.
+
+To fix this, websites need to make sure they always check if you're allowed to access something before showing it to you. They should only let you open your own secret box and play with your own toys. This way, everyone's things stay safe and private.
+
+So, IDOR is when a website forgets to check if you're allowed to see or change something and lets you access things that should be private. It's important for websites to be careful and always check permissions to keep everyone's information secure.
 ````
 ## Setup
 ### Option #1
