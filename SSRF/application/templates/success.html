@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Success!</title>
+	<style>
+		body {
+			font-family: Arial, sans-serif;
+			background-color: #f5f5f5;
+			color: #333;
+		}
+		h1 {
+			text-align: center;
+			font-size: 3em;
+			margin-top: 50px;
+			margin-bottom: 20px;
+		}
+		p {
+			text-align: center;
+			font-size: 1.5em;
+			margin-bottom: 50px;
+		}
+		button {
+			display: block;
+			margin: 0 auto;
+			font-size: 1.2em;
+			padding: 10px 20px;
+			background-color: #4CAF50;
+			color: white;
+			border: none;
+			border-radius: 5px;
+			cursor: pointer;
+			transition: background-color 0.2s ease-in-out;
+		}
+		button:hover {
+			background-color: #3e8e41;
+		}
+	</style>
+</head>
+<body>
+	<h1>Success!</h1>
+	<p>Your URL has been added to the database.</p>
+	<p><a href="{{ url_for('home') }}" download>Download PDF</a></p>
+</body>
+</html>
